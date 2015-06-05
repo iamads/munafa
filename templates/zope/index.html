@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+
+<body>
 {% if user and not user.is_anonymous %}
     Hi
      <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
 {% else %}
-    Login
     <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
     <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+     <form action="{% url "social:complete" "email" %}" method="post" role="form">{% csrf_token %}
+    <h4>Email Authentication</h4>
+   email: <input id="email" type="email" name="email" value="" /><br />
+   password:  <input id="password" type="password" name="password" value="" /><br />
+    <input type="submit" name="submit" value="submit">
+    </form>
+    <br /><h4>Or <a href="register">Register with us</a></h4>
 {% endif %}
-<body>
-
 </body>
 </html>

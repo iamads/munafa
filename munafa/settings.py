@@ -62,11 +62,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+
 )
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GoogleOAuth2',
+    'social.backends.email.EmailAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -78,6 +80,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.get_username',
     'social.pipeline.social_auth.associate_by_email',
     'social.pipeline.user.create_user',
+    'zope.pipeline.user_password',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
@@ -93,6 +96,11 @@ SOCIAL_AUTH_FACEBOOK_SECRET = fb_app_secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = google_client_id
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = google_client_secret
+
+SOCIAL_AUTH_EMAIL_FORM_URL = '/login-form/'
+
+SOCIAL_AUTH_EMAIL_FORM_HTML = 'login_form.html'
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
