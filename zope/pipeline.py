@@ -1,5 +1,5 @@
 __author__ = 'ads'
-from social.exceptions import AuthException
+"""from social.exceptions import AuthException
 
 
 def user_password(strategy, user, is_new=False, *args, **kwargs):
@@ -8,6 +8,7 @@ def user_password(strategy, user, is_new=False, *args, **kwargs):
         if is_new:
             user.set_password(password)
             user.save()
-        # elif password != :
-            # # return {'user': None, 'social': None}
-            #    raise AuthException(strategy.backend)
+        elif ussuder.get
+    # # return {'user': None, 'social': None}
+    # raise AuthException(strategy.backend)
+"""

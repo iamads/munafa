@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'zope',
     'social.apps.django_app.default',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +81,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.get_username',
     'social.pipeline.social_auth.associate_by_email',
     'social.pipeline.user.create_user',
-    'zope.pipeline.user_password',
+#    'zope.pipeline.user_password',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
@@ -101,6 +102,11 @@ SOCIAL_AUTH_EMAIL_FORM_URL = '/login-form/'
 
 SOCIAL_AUTH_EMAIL_FORM_HTML = 'login_form.html'
 
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+#LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
